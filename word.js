@@ -25,7 +25,7 @@ Word.prototype.printGame = function() {
     let guessedList = "";
     this.guessed.forEach((guess, index) => {
       guessedList += guess;
-      if (this.guessed.length - 1 !== index) {
+      if (this.guessed[index+1]) {
         guessedList += ", ";
       }
     });
