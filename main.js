@@ -46,7 +46,6 @@ function playGame() {
       message: "Type the letter you want to guess."
     })
     .then(answer => {
-      debugger;
       word.checkGuess(answer.guess);
       if (word.guesses === 0) {
         endGame(false);

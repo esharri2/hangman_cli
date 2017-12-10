@@ -12,6 +12,7 @@ let Word = function() {
 
 Word.prototype.printGame = function() {
   let wordDisplay = "";
+  //Print word with blanks
   this.letters.forEach(function(letter) {
     if (letter.guessed === false) {
       wordDisplay += "_";
@@ -21,11 +22,13 @@ Word.prototype.printGame = function() {
     wordDisplay += " ";
   });
   console.log(wordDisplay + "\n");
+  //Print list of wrong guesses
   if (this.guessed.length > 0) {
     let guessedList = "";
     this.guessed.forEach((guess, index) => {
       guessedList += guess;
-      if (this.guessed[index+1]) {
+      //Add a comma after it's not the last letter
+      if (this.guessed[index + 1]) {
         guessedList += ", ";
       }
     });
@@ -35,14 +38,18 @@ Word.prototype.printGame = function() {
 };
 
 Word.prototype.checkGuess = function(guess) {
+  
+  //set initial conditions
   let wrong = true;
   let won = true;
 
+  //check word to see if there is a match for the guess
   this.letters.forEach((letter, index) => {
     if (letter.value === guess.toLowerCase()) {
       this.letters[index].guessed = true;
       wrong = false;
     }
+    //keep checking if there are still unguessed letters
     if (letter.guessed === false) {
       won = false;
     }
